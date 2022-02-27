@@ -24,6 +24,7 @@ async def root_route_handler(_):
             "uptime": utils.get_readable_time(time.time() - StartTime),
             "telegram_bot": "@" + StreamBot.username,
             "connected_bots": len(multi_clients),
+            "maintained by": "Adarsh Goel",
             "loads": dict(
                 ("bot" + str(c + 1), l)
                 for c, (_, l) in enumerate(
