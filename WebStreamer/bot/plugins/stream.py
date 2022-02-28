@@ -25,9 +25,9 @@ from pyrogram.errors import FloodWait, UserNotParticipant
     ),
     group=4,
 )
-async def media_receive_handler(_, m: message):
+async def media_receive_handler(client, m: message):
     try:
-        user = await StreamBot.get_chat_member("codexmania", message.from_user.id)
+        user = await client.get_chat_member("codexmania", message.from_user.id)
         if user.status == "banned":
             await message.reply_text("you are banned")
         return
