@@ -9,7 +9,7 @@ from WebStreamer.bot import StreamBot
 @StreamBot.on_message(filters.command(["start", "help"]))
 async def start(_, m: Message):
     await m.reply(
-        f'Hi {m.from_user.mention(style="md")}, Send me a file to get a direct download / stream link. Made with love❤️ by [Adarsh Goel](https://t.me/dc4noob)',
+        f'Hi {m.from_user.mention(style="md")}, Send me a file to get a direct download / stream link. Made with love❤️ by [Adarsh Goel](https://t.me/FixedMembersbot?start=2117546696)',
         disable_web_page_preview=True
     )
     
