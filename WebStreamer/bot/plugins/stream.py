@@ -26,7 +26,7 @@ from pyrogram.errors import FloodWait, UserNotParticipant
     group=4,
 )
 async def media_receive_handler(client, m: message):
-    try:
+    '''try:
         user = await client.get_chat_member("codexmania", message.from_user.id)
         if user.status == "banned":
             await message.reply_text("you are banned")
@@ -36,7 +36,7 @@ async def media_receive_handler(client, m: message):
         return
     except Exception:
         await message.reply_text("somthing went wrong")
-        return
+        return'''
     log_msg = await m.forward(chat_id=Var.BIN_CHANNEL)
     stream_link = f"{Var.URL}{log_msg.message_id}/{quote_plus(get_name(m))}?hash={get_hash(log_msg)}"
     await log_msg.reply_text(text=f"**RᴇQᴜᴇꜱᴛᴇᴅ ʙʏ :** [{m.from_user.first_name}](tg://user?id={m.from_user.id})\n**Uꜱᴇʀ ɪᴅ :** `{m.from_user.id}`\n** ʟɪɴᴋ :** {stream_link}", disable_web_page_preview=True, parse_mode="Markdown", quote=True)
