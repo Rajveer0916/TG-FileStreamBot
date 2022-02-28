@@ -25,17 +25,17 @@ from pyrogram.errors import FloodWait, UserNotParticipant
     ),
     group=4,
 )
-async def media_receive_handler(_, m: update):
+async def media_receive_handler(_, m: message):
     try:
-        user = await StreamBot.get_chat_member("codexmania", update.from_user.id)
+        user = await StreamBot.get_chat_member("codexmania", message.from_user.id)
         if user.status == "banned":
-            await update.reply_text("you are banned")
+            await message.reply_text("you are banned")
         return
     except UserNotParticipant:
         await upate.reply_text("you have not joined join update channel")
         return
     except Exception:
-        await update.reply_text("somthing went wrong")
+        await message.reply_text("somthing went wrong")
         return
     log_msg = await m.forward(chat_id=Var.BIN_CHANNEL)
     stream_link = f"{Var.URL}{log_msg.message_id}/{quote_plus(get_name(m))}?hash={get_hash(log_msg)}"
