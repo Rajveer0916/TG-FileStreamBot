@@ -8,8 +8,7 @@ from urllib.parse import quote_plus
 from WebStreamer.bot import StreamBot
 from WebStreamer.utils import get_hash, get_name
 from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
-
-
+from pyrogram.errors import FloodWait, UserNotParticipant
 
 
 @StreamBot.on_message(
@@ -28,7 +27,7 @@ from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton
 )
 async def media_receive_handler(_, m: Message):
     try:
-        user = await bot.get_chat_member("update channel", update.from_user.id)
+        user = await StreamBot.get_chat_member("codexmania", update.from_user.id)
         if user.status == "banned":
             await update.reply_text("you are banned")
         return
